@@ -83,24 +83,37 @@ namespace Rubix
   {
     cout << "Slice no " << slice + 1 << " rotated down" << endl;
 	
-	vector<int> tempSlice = vector<int>{FaceFour[slice], FaceFour[slice + 3], FaceFour[slice + 6]};
-	for (int i = 0; i < 3; i++)
-	{
-		FaceFour[slice + i * 3] = FaceFive[6 - slice * 3 + i];
-		FaceFive[6 - slice * 3 + i] = FaceTwo[8 - slice - 3 * i];
-		FaceTwo[8 - slice - 3 * i] = FaceSix[slice * 3 + 2 - i];
-		FaceSix[slice * 3 + 2 - i] = tempSlice[i];
-	}
+    vector<int> tempSlice = vector<int>{FaceFour[slice], FaceFour[slice + 3], FaceFour[slice + 6]};
+    for (int i = 0; i < 3; i++)
+    {
+      FaceFour[slice + i * 3] = FaceFive[6 - slice * 3 + i];
+      FaceFive[6 - slice * 3 + i] = FaceTwo[8 - slice - 3 * i];
+      FaceTwo[8 - slice - 3 * i] = FaceSix[slice * 3 + 2 - i];
+      FaceSix[slice * 3 + 2 - i] = tempSlice[i];
+    }
 
-	if (slice == 0)
-		RotateClock(FaceOne);
-	else if (slice == 2)
-		RotateCClock(FaceThree);
+    if (slice == 0)
+      RotateClock(FaceOne);
+    else if (slice == 2)
+      RotateCClock(FaceThree);
   }
   
   void Cube::SliceCClock(int slice)
   {
     cout << "Slice no " << slice + 1 << " rotated down" << endl;
+    vector<int> tempSlice = vector<int>{FaceFour[slice], FaceFour[slice + 3], FaceFour[slice + 6]};
+    for (int i = 0; i < 3; i++)
+    {
+      FaceFour[slice + i * 3] = FaceSix[slice * 3 + 2 - i]; //FaceFive[6 - slice * 3 + i];
+      FaceSix[slice * 3 + 2 - i] = FaceTwo[8 - slice - 3 * i];
+      FaceTwo[8 - slice - 3 * i] = FaceFive[6 - slice * 3 + i];
+      FaceFive[6 - slice * 3 + i] = tempSlice[i];
+    }
+
+    if (slice == 0)
+      RotateCClock(FaceOne);
+    else if (slice == 2)
+      RotateClock(FaceThree);
   }
 
   bool Cube::IsSolved()
