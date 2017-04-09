@@ -14,8 +14,8 @@ namespace Rubix
     void RowRight(int row);
     void ColUp(int col);
     void ColDown(int col);
-    void FaceClock(int face);
-    void FaceCClock(int face);
+    void SliceClock(int slice);
+    void SliceCClock(int slice);
     bool IsSolved();
     friend std::ostream& Rubix::operator<<(std::ostream& os, const Cube& cube);
     ~Cube();
