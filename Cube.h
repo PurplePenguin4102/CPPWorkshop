@@ -6,16 +6,18 @@
 
 namespace Rubix
 {
+  std::ostream& operator<<(std::ostream& out, const std::vector<int>& v);
+  
   class Cube
   {
   public:
     Cube();
-    void RowLeft(int row);
-    void RowRight(int row);
-    void ColUp(int col);
-    void ColDown(int col);
-    void SliceClock(int slice);
-    void SliceCClock(int slice);
+    void RowLeft(unsigned int row);
+    void RowRight(unsigned int row);
+    void ColUp(unsigned int col);
+    void ColDown(unsigned int col);
+    void SliceClock(unsigned int slice);
+    void SliceCClock(unsigned int slice);
     bool IsSolved();
     friend std::ostream& Rubix::operator<<(std::ostream& os, const Cube& cube);
     ~Cube();

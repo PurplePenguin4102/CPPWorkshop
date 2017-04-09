@@ -9,12 +9,12 @@ namespace Rubix
     cout << "hello, Cube constructed" << endl;
   }
 
-  void Cube::RowLeft(int row)
+  void Cube::RowLeft(unsigned int row)
   {
-    cout << "Cube row " << row + 1 << " rotated left" << endl;
-    int rowMod = row * 3;
+    cout << "Cube row " << to_string(row + 1) << " rotated left" << endl;
+    unsigned int rowMod = row * 3;
     vector<int> tempRow = vector<int>{FaceOne[rowMod], FaceOne[rowMod + 1], FaceOne[rowMod + 2]};
-    for (int i = rowMod; i < rowMod + 3; ++i)
+    for (unsigned int i = rowMod; i < rowMod + 3; ++i)
     {
       FaceOne[i] = FaceFour[i];
       FaceFour[i] = FaceThree[i];
@@ -27,12 +27,12 @@ namespace Rubix
       RotateCClock(FaceSix);
   }
 
-  void Cube::RowRight(int row)
+  void Cube::RowRight(unsigned int row)
   {
-    cout << "Cube row " << row + 1 << " rotated right" << endl;
-    int rowMod = row * 3;
+    cout << "Cube row " << to_string(row + 1) << " rotated right" << endl;
+    unsigned int rowMod = row * 3;
     vector<int> tempRow = vector<int>{FaceOne[rowMod], FaceOne[rowMod + 1], FaceOne[rowMod + 2]};
-    for (int i = rowMod; i < rowMod + 3; ++i)
+    for (unsigned int i = rowMod; i < rowMod + 3; ++i)
     {
       FaceOne[i] = FaceTwo[i];
       FaceTwo[i] = FaceThree[i];
@@ -45,11 +45,11 @@ namespace Rubix
       RotateClock(FaceSix);
   }
   
-  void Cube::ColUp(int col)
+  void Cube::ColUp(unsigned int col)
   {
-    cout << "Cube col " << col + 1 <<  " rotated up" << endl;
+    cout << "Cube col " << to_string(col + 1) <<  " rotated up" << endl;
     vector<int> tempCol = vector<int>{FaceOne[col], FaceOne[col + 3], FaceOne[col + 6]};
-    for (int i = col, j = 8 - col; i < 9; i += 3, j -= 3)
+    for (unsigned int i = col, j = 8 - col; i < 9; i += 3, j -= 3)
     {
       FaceOne[i] = FaceSix[i];
       FaceSix[i] = FaceThree[j];
@@ -62,11 +62,11 @@ namespace Rubix
       RotateClock(FaceFour);
   }  
   
-  void Cube::ColDown(int col)
+  void Cube::ColDown(unsigned int col)
   {
-    cout << "Cube col " << col + 1 <<  " rotated down" << endl;
+    cout << "Cube col " << to_string(col + 1) <<  " rotated down" << endl;
     vector<int> tempCol = vector<int>{FaceOne[col], FaceOne[col + 3], FaceOne[col + 6]};
-    for (int i = col, j = 8 - col; i < 9; i += 3, j -= 3)
+    for (unsigned int i = col, j = 8 - col; i < 9; i += 3, j -= 3)
     {
       FaceOne[i] = FaceFive[i];
       FaceFive[i] = FaceThree[j];
@@ -79,12 +79,12 @@ namespace Rubix
       RotateCClock(FaceFour);
   }
   
-  void Cube::SliceClock(int slice)
+  void Cube::SliceClock(unsigned int slice)
   {
-    cout << "Slice no " << slice + 1 << " rotated down" << endl;
+    cout << "Slice no " << to_string(slice + 1) << " rotated down" << endl;
 	
     vector<int> tempSlice = vector<int>{FaceFour[slice], FaceFour[slice + 3], FaceFour[slice + 6]};
-    for (int i = 0; i < 3; i++)
+    for (unsigned int i = 0; i < 3; i++)
     {
       FaceFour[slice + i * 3] = FaceFive[6 - slice * 3 + i];
       FaceFive[6 - slice * 3 + i] = FaceTwo[8 - slice - 3 * i];
@@ -98,11 +98,11 @@ namespace Rubix
       RotateCClock(FaceThree);
   }
   
-  void Cube::SliceCClock(int slice)
+  void Cube::SliceCClock(unsigned int slice)
   {
-    cout << "Slice no " << slice + 1 << " rotated down" << endl;
+    cout << "Slice no " << to_string(slice + 1) << " rotated down" << endl;
     vector<int> tempSlice = vector<int>{FaceFour[slice], FaceFour[slice + 3], FaceFour[slice + 6]};
-    for (int i = 0; i < 3; i++)
+    for (unsigned int i = 0; i < 3; i++)
     {
       FaceFour[slice + i * 3] = FaceSix[slice * 3 + 2 - i]; //FaceFive[6 - slice * 3 + i];
       FaceSix[slice * 3 + 2 - i] = FaceTwo[8 - slice - 3 * i];
@@ -119,6 +119,7 @@ namespace Rubix
   bool Cube::IsSolved()
   {
     cout << "hello, Cube constructed" << endl;
+    return false;
   }
 
   void Cube::RotateClock(vector<int> face)
