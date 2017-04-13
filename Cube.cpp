@@ -5,7 +5,7 @@ using namespace std;
 namespace Rubix
 {
   Cube::Cube()
-  {
+  { 
     cout << "hello, Cube constructed" << endl;
   }
 
