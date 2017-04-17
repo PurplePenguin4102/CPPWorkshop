@@ -7,7 +7,7 @@ namespace Rubix
   Cube::Cube()
   { 
     cout << "hello, Cube constructed" << endl;
-  }
+  } 
 
   void Cube::RowLeft(unsigned int row)
   {
