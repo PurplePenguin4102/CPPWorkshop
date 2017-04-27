@@ -10,7 +10,7 @@ namespace Rubix
   } 
 
   void Cube::RowLeft(unsigned int row)
-  {
+  { 
     cout << "Cube row " << to_string(row + 1) << " rotated left" << endl;
     unsigned int rowMod = row * 3;
     vector<int> tempRow = vector<int>{FaceOne[rowMod], FaceOne[rowMod + 1], FaceOne[rowMod + 2]};
